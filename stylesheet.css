@@ -32,7 +32,7 @@
   --footer-text: #ffffff;
   --border-color: #444444;
   --shadow-glow: rgba(0, 0, 0, 0.5);
-  --profile-glow: rgba(255, 255, 255, 0.1);
+  --profile-glow: rgba(30, 30, 30, 0.4);
 }
 
 /* ============================================
@@ -300,6 +300,22 @@ body.dark-theme .nav-link.active {
   text-align: center;
 }
 
+.sidebar .contact-info a {
+  color: var(--accent);
+}
+
+body.dark-theme .sidebar .contact-info a {
+  color: var(--accent);
+}
+
+.sidebar .likes-item a {
+  color: var(--accent);
+}
+
+body.dark-theme .sidebar .likes-item a {
+  color: var(--accent);
+}
+
 .sidebar h3 {
   color: var(--text-primary);
   margin-bottom: 10px;
@@ -325,7 +341,7 @@ body.dark-theme .nav-link.active {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--border-color);
+  border: 3px solid var(--accent);
   box-shadow: 0 0 15px 0 var(--profile-glow);
 }
 
@@ -1052,4 +1068,77 @@ body.dark-theme .nav-link.active {
   .slide::after {
     font-size: 10px;
   }
+}
+
+/* ============================================
+   SOCIAL MEDIA BUTTONS
+============================================ */
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0 25px 0;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+  /* Outer glow matching profile picture */
+  box-shadow: 0 0 15px 0 var(--profile-glow);
+}
+
+.social-button svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transition: fill 0.3s ease;
+}
+
+.social-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.1);
+  /* Enhanced glow on hover */
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.social-button:hover svg {
+  fill: var(--accent);
+}
+
+.social-button:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Dark mode specific adjustments */
+body.dark-theme .social-button {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+body.dark-theme .social-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+body.dark-theme .social-button:hover svg {
+  fill: var(--accent);
+}
+
+/* Adjust glow for dark mode */
+body.dark-theme .social-button {
+  box-shadow: 0 0 15px 0 var(--profile-glow);
 }

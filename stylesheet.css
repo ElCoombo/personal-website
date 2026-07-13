@@ -161,9 +161,11 @@ body.dark-theme .content-section a {
 
 .site-title:hover,
 .site-title:focus {
-  color: var(--header-text);
-  outline: none;
+  color: var(--accent);
+  transform: scale(1.1);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
+
 
 .theme-toggle {
   position: absolute;
@@ -291,7 +293,7 @@ body.dark-theme .nav-link.active {
 ============================================ */
 .sidebar {
   flex: 1;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   padding: 15px;
   border-radius: 5px;
   border: 1px solid var(--border-color);
@@ -320,6 +322,12 @@ body.dark-theme .sidebar .likes-item a {
   color: var(--text-primary);
   margin-bottom: 10px;
 }
+
+.sidebar h4 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
 
 .sidebar h5 {
   color: var(--text-secondary);
@@ -461,9 +469,9 @@ body.dark-theme .sidebar .likes-item a {
 }
 
 .thumbnail {
-  width: calc(10% - 10px);
+  width: calc(8% - 10px);  /* Better distribution for 30 thumbnails */
   min-width: 80px;
-  max-width: 120px;
+  max-width: 100px;
   cursor: pointer;
   opacity: 0.5;
   border-radius: 5px;
@@ -998,7 +1006,7 @@ body.dark-theme .sidebar .likes-item a {
   bottom: 15px;
   right: 15px;
   font-size: 12px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   background-color: rgba(0, 0, 0, 0.6);
   padding: 5px 10px;
   border-radius: 3px;
@@ -1020,7 +1028,7 @@ body.dark-theme .sidebar .likes-item a {
 .gallery-modal-image img {
   width: 100%;
   height: auto;
-  max-height: 60vh;
+  max-height: 80vh;
   object-fit: contain;
   display: block;
   background-color: var(--bg-secondary);
@@ -1039,6 +1047,56 @@ body.dark-theme .sidebar .likes-item a {
 .gallery-modal-info p {
   color: var(--text-secondary);
   line-height: 1.8;
+}
+
+/* ============================================
+   GALLERY MODAL NAVIGATION ARROWS
+============================================ */
+.gallery-nav-prev,
+.gallery-nav-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 12px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10001;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-nav-prev {
+  left: 10px;
+}
+
+.gallery-nav-next {
+  right: 10px;
+}
+
+.gallery-nav-prev:hover,
+.gallery-nav-next:hover {
+  background-color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* On mobile, make arrows smaller and move them lower */
+@media (max-width: 768px) {
+  .gallery-nav-prev,
+  .gallery-nav-next {
+    font-size: 24px;
+    padding: 10px 8px;
+  }
+
+  .gallery-nav-prev {
+    left: 5px;
+  }
+
+  .gallery-nav-next {
+    right: 5px;
+  }
 }
 
 /* Hide the click hint when a slideshow arrow is being used */

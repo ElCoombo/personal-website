@@ -16,6 +16,7 @@
   --border-color: #dddddd;
   --shadow-glow: rgba(0, 0, 0, 0.15);
   --profile-glow: rgba(0, 0, 0, 0.2);
+  --bg-light-image: url("img/bgtile-02.jpg");
 }
 
 .dark-theme {
@@ -33,6 +34,7 @@
   --border-color: #444444;
   --shadow-glow: rgba(0, 0, 0, 0.5);
   --profile-glow: rgba(30, 30, 30, 0.4);
+  --bg-dark-image: url("img/bgtile-01.jpg");
 }
 
 /* ============================================
@@ -60,10 +62,18 @@ body {
   font-family: 'JetBrains Mono', monospace;
   line-height: 1.6;
   color: var(--text-primary);
+  /* REPLACE WITH THESE TWO LINES */
+  background-image: var(--bg-light-image);
   background-color: var(--bg-body);
+  background-repeat: repeat;
+  background-size: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+body.dark-theme {
+  background-image: var(--bg-dark-image);
 }
 
 /* ============================================
@@ -231,6 +241,7 @@ body.dark-theme .content-section a {
   padding: 10px 28px;
   text-decoration: none;
   border-radius: 5px;
+  font-size: 18px;
   font-weight: 900;
   margin: 5px;
   display: flex;
@@ -272,6 +283,7 @@ body.dark-theme .nav-link.active {
     -15px 0 20px 0 var(--shadow-glow),
     15px 0 20px 0 var(--shadow-glow);
   margin-top: 140px;
+  background-color: var(--bg-body);
 }
 
 .content-section {

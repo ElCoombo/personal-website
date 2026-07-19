@@ -69,6 +69,14 @@ body {
 /* ============================================
    TYPOGRAPHY
 ============================================ */
+.content-section h1 {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+
 .content-section h2 {
   color: var(--text-primary);
   margin-bottom: 15px;
@@ -92,6 +100,7 @@ body {
 
 .content-section p {
   color: var(--text-secondary);
+  font-size: 18px;
 }
 
 .content-section a {
@@ -253,7 +262,7 @@ body.dark-theme .nav-link.active {
    WRAPPER & LAYOUT
 ============================================ */
 .wrapper {
-  max-width: 1200px;
+  max-width: 85%;
   width: 90%;
   margin: 0 auto;
   padding: 20px;
@@ -294,12 +303,13 @@ body.dark-theme .nav-link.active {
 .sidebar {
   flex: 1;
   background-color: var(--bg-primary);
-  padding: 15px;
+  padding: 30px;
   border-radius: 5px;
   border: 1px solid var(--border-color);
   min-height: 100%;
   align-items: center;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .sidebar .contact-info a {

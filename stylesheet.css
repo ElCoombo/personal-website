@@ -62,7 +62,6 @@ body {
   font-family: 'JetBrains Mono', monospace;
   line-height: 1.6;
   color: var(--text-primary);
-  /* REPLACE WITH THESE TWO LINES */
   background-image: var(--bg-light-image);
   background-color: var(--bg-body);
   background-repeat: repeat;
@@ -274,7 +273,7 @@ body.dark-theme .nav-link.active {
 ============================================ */
 .wrapper {
   max-width: 85%;
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
   padding: 20px;
   flex: 1;

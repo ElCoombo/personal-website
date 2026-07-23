@@ -199,7 +199,11 @@ function closeCVModal() {
 
 // ===== GALLERY MODAL FUNCTIONS =====
 
+let currentGalleryIndex = 1;
+const totalGalleries = document.querySelectorAll('[id^="gallery"][id$="-modal"]').length;
+
 function openGalleryModal(modalId) {
+  currentGalleryIndex = parseInt(modalId.replace('gallery', ''), 10);
   const modal = document.getElementById(`${modalId}-modal`);
   if (modal) {
     modal.style.display = 'block';
@@ -214,6 +218,28 @@ function closeGalleryModal(modalId) {
     document.body.style.overflow = 'auto';
   }
 }
+
+function navigateGalleryModal(direction) {
+  closeGalleryModal(`gallery${currentGalleryIndex}`);
+  currentGalleryIndex += direction;
+  if (currentGalleryIndex > totalGalleries) currentGalleryIndex = 1;
+  if (currentGalleryIndex < 1) currentGalleryIndex = totalGalleries;
+  openGalleryModal(`gallery${currentGalleryIndex}`);
+}
+
+// Keyboard navigation inside gallery modals
+document.addEventListener('keydown', function(e) {
+  const openModal = document.querySelector('.project-modal[style*="display: block"]');
+  if (!openModal) return;
+  // Only handle gallery modals, not project modals
+  if (!openModal.id.startsWith('gallery')) return;
+
+  if (e.key === 'ArrowLeft') {
+    navigateGalleryModal(-1);
+  } else if (e.key === 'ArrowRight') {
+    navigateGalleryModal(1);
+  }
+});
 
 
 // ===== PROJECT MODAL FUNCTIONS =====

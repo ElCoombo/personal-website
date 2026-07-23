@@ -4,7 +4,7 @@
 :root {
   --bg-body: #e8e8e8;
   --bg-primary: #f9f9f9;
-  --bg-secondary: #f0f0f0;
+  --bg-secondary: #b9b9b9;
   --bg-navbar: #f5f5f5;
   --text-primary: #333333;
   --text-secondary: #666666;
@@ -16,6 +16,7 @@
   --border-color: #dddddd;
   --shadow-glow: rgba(0, 0, 0, 0.15);
   --profile-glow: rgba(0, 0, 0, 0.2);
+  --bg-light-image: url("img/bgtile-02.jpg");
 }
 
 .dark-theme {
@@ -33,6 +34,7 @@
   --border-color: #444444;
   --shadow-glow: rgba(0, 0, 0, 0.5);
   --profile-glow: rgba(30, 30, 30, 0.4);
+  --bg-dark-image: url("img/bgtile-01.jpg");
 }
 
 /* ============================================
@@ -60,15 +62,30 @@ body {
   font-family: 'JetBrains Mono', monospace;
   line-height: 1.6;
   color: var(--text-primary);
+  background-image: var(--bg-light-image);
   background-color: var(--bg-body);
+  background-repeat: repeat;
+  background-size: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+body.dark-theme {
+  background-image: var(--bg-dark-image);
+}
+
 /* ============================================
    TYPOGRAPHY
 ============================================ */
+.content-section h1 {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+
 .content-section h2 {
   color: var(--text-primary);
   margin-bottom: 15px;
@@ -92,6 +109,7 @@ body {
 
 .content-section p {
   color: var(--text-secondary);
+  font-size: 18px;
 }
 
 .content-section a {
@@ -161,9 +179,11 @@ body.dark-theme .content-section a {
 
 .site-title:hover,
 .site-title:focus {
-  color: var(--header-text);
-  outline: none;
+  color: var(--accent);
+  transform: scale(1.1);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
+
 
 .theme-toggle {
   position: absolute;
@@ -220,6 +240,7 @@ body.dark-theme .content-section a {
   padding: 10px 28px;
   text-decoration: none;
   border-radius: 5px;
+  font-size: 18px;
   font-weight: 900;
   margin: 5px;
   display: flex;
@@ -251,8 +272,8 @@ body.dark-theme .nav-link.active {
    WRAPPER & LAYOUT
 ============================================ */
 .wrapper {
-  max-width: 1200px;
-  width: 90%;
+  max-width: 85%;
+  width: 70%;
   margin: 0 auto;
   padding: 20px;
   flex: 1;
@@ -261,6 +282,7 @@ body.dark-theme .nav-link.active {
     -15px 0 20px 0 var(--shadow-glow),
     15px 0 20px 0 var(--shadow-glow);
   margin-top: 140px;
+  background-color: var(--bg-body);
 }
 
 .content-section {
@@ -291,13 +313,14 @@ body.dark-theme .nav-link.active {
 ============================================ */
 .sidebar {
   flex: 1;
-  background-color: var(--bg-secondary);
-  padding: 15px;
+  background-color: var(--bg-primary);
+  padding: 30px;
   border-radius: 5px;
   border: 1px solid var(--border-color);
   min-height: 100%;
   align-items: center;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .sidebar .contact-info a {
@@ -320,6 +343,12 @@ body.dark-theme .sidebar .likes-item a {
   color: var(--text-primary);
   margin-bottom: 10px;
 }
+
+.sidebar h4 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
 
 .sidebar h5 {
   color: var(--text-secondary);
@@ -461,9 +490,9 @@ body.dark-theme .sidebar .likes-item a {
 }
 
 .thumbnail {
-  width: calc(10% - 10px);
+  width: calc(8% - 10px);  /* Better distribution for 30 thumbnails */
   min-width: 80px;
-  max-width: 120px;
+  max-width: 100px;
   cursor: pointer;
   opacity: 0.5;
   border-radius: 5px;
@@ -998,7 +1027,7 @@ body.dark-theme .sidebar .likes-item a {
   bottom: 15px;
   right: 15px;
   font-size: 12px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   background-color: rgba(0, 0, 0, 0.6);
   padding: 5px 10px;
   border-radius: 3px;
@@ -1020,7 +1049,7 @@ body.dark-theme .sidebar .likes-item a {
 .gallery-modal-image img {
   width: 100%;
   height: auto;
-  max-height: 60vh;
+  max-height: 80vh;
   object-fit: contain;
   display: block;
   background-color: var(--bg-secondary);
@@ -1039,6 +1068,56 @@ body.dark-theme .sidebar .likes-item a {
 .gallery-modal-info p {
   color: var(--text-secondary);
   line-height: 1.8;
+}
+
+/* ============================================
+   GALLERY MODAL NAVIGATION ARROWS
+============================================ */
+.gallery-nav-prev,
+.gallery-nav-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 12px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10001;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-nav-prev {
+  left: 10px;
+}
+
+.gallery-nav-next {
+  right: 10px;
+}
+
+.gallery-nav-prev:hover,
+.gallery-nav-next:hover {
+  background-color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* On mobile, make arrows smaller and move them lower */
+@media (max-width: 768px) {
+  .gallery-nav-prev,
+  .gallery-nav-next {
+    font-size: 24px;
+    padding: 10px 8px;
+  }
+
+  .gallery-nav-prev {
+    left: 5px;
+  }
+
+  .gallery-nav-next {
+    right: 5px;
+  }
 }
 
 /* Hide the click hint when a slideshow arrow is being used */
